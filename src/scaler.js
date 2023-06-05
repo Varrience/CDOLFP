@@ -9,7 +9,7 @@ if(urlEmbed.includes("applab")) {
   embed.style["height"] = "515px"
   embed.style["transform"] = "translate(-50%, -25%);"
   embed.style["clip-path"] = "inset(68px, 0px, 0px, 36px)"
-else {
+} else {
   embed.style["height"] = "400px"
 }
 const aspect = Math.min(window.innerWidth, window.innerHeight);
