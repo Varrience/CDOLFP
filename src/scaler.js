@@ -4,6 +4,6 @@ const embed = document.querySelector("#game");
 embed.src = urlEmbed;
 embed.style.height = urlEmbed.includes("gamelab") ? "400px": "450px";
 const aspect = Math.min(window.innerWidth, window.innerHeight);
-const scale = aspect / embed.height.match(/\d+/g)[0]; // divide this by the height if you want the joypad
+const scale = aspect / embed.style.height.match(/\d+/g)[0]; // divide this by the height if you want the joypad
 embed.style["transform"] = `scale(${scale})`;
 embed.style["transform-origin"] = `top center`;
