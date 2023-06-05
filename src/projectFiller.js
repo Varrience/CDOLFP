@@ -63,12 +63,11 @@ function filterProjects(e){
 
     if(filter == "lastupdated"){
         //pjs.sort(function(a, b){return b-a});
-        let dates = Array();
         pjs.forEach(e => {
-            dates.push({element: e, date: (new Date(e.children[2].innerText.toLowerCase())).getTime()})
+            pjdata.push({element: e, date: (new Date(e.children[2].innerText.toLowerCase())).getTime()})
         })
-        dates.sort(function(a,b){return b.date - a.date})
-        dates.forEach(d => {
+        pjdata.sort(function(a,b){return b.date - a.date})
+        pjdata.forEach(d => {
             filteredProjects.push(d.element.outerHTML)
         })
     }
