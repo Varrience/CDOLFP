@@ -66,10 +66,9 @@ function filterProjects(e){
         //pjs.sort(function(a, b){return b-a});
         pjs.forEach(d => pjdata.push((new Date(d.children[2].innerText.toLowerCase())).getTime()));
         pjdata.sort(function(a, b){return b-a});
-        
+        console.log(pjdata)
         pjdata.forEach(p=>{
             let project = pjs.filter(d =>{return p == (new Date(d.children[2].innerText.toLowerCase())).getTime()});
-            console.log(project)
             filteredProjects.push(project[0].outerHTML);
         })
         
