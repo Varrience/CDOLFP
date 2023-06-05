@@ -69,6 +69,7 @@ function filterProjects(e){
         
         pjdata.forEach(p=>{
             let project = pjs.filter(d =>{return p == (new Date(d.children[2].innerText.toLowerCase())).getTime()});
+            console.log(project)
             filteredProjects.push(project[0].outerHTML);
         })
         
