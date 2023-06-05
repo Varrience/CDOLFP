@@ -62,17 +62,17 @@ function filterProjects(e){
     }
 
     if(filter == "lastupdated"){
-
         //pjs.sort(function(a, b){return b-a});
-        pjs.forEach(d => pjdata.push((new Date(d.children[2].innerText.toLowerCase())).getTime()));
-        console.log(pjs)
-        pjdata.sort(function(a, b){return b-a});
-        console.log(pjdata)
-        pjdata.forEach(p=>{
-            let project = pjs.filter(d =>{return p == (new Date(d.children[2].innerText.toLowerCase())).getTime()});
-            filteredProjects.push(project[0].outerHTML);
+        let dates = Array();
+        let projects = Array();
+        pjs.forEach(e => {
+            dates.push({element: e, date: (new  Date(e.children[2].innerText.toLowerCase())).getTime()})
         })
-        
+        dates.sort(function(a,b){return b.date - a.date})
+        dates.forEach(d => {
+            projects.push(d.element.outerHTML)
+        })
+        return projects.join("")
     }
 
         
