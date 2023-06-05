@@ -13,6 +13,8 @@ projectTable.innerHtml = "";
       })
       .then(project => {
       if(project == undefined) {return}
+      let date = new Date(project.updatedAt);
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
       projectTable.innerHTML += `
       <tr>
        <th>
@@ -26,7 +28,7 @@ projectTable.innerHtml = "";
         </a>
        </th>
        <th>
-        <p> ${project.updatedAt} <p>
+        <p> ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} <p>
        </th>
       `
       })
@@ -39,3 +41,53 @@ projectTable.innerHtml = "";
         }
       })
     })(0)
+
+
+function filterProjects(e){
+    let filter = e.srcElement.innerText.toLowerCase().replace(/\s/g, "") || e.srcElement.parentElement.innerText.toLowerCase().replace(/\s/g, "");
+    let pjs = Array.from(document.querySelector("#projectList").children);
+    let pjdata = Array();
+    let filteredProjects = Array();
+
+    if(filter == "name"){
+
+        pjs.forEach(d => pjdata.push(d.children[1].innerText.toLowerCase()));
+        pjdata.sort();
+        
+        pjdata.forEach(p=>{
+            let project = pjs.filter(d =>{return p == d.children[1].innerText.toLowerCase()});
+            filteredProjects.push(project[0].outerHTML);
+        })
+
+    }
+
+    if(filter == "lastupdated"){
+
+        //pjs.sort(function(a, b){return b-a});
+        pjs.forEach(d => pjdata.push((new Date(d.children[2].innerText.toLowerCase())).getTime()));
+        pjdata.sort(function(a, b){return b-a});
+        
+        pjdata.forEach(p=>{
+            let project = pjs.filter(d =>{return p == (new Date(d.children[2].innerText.toLowerCase())).getTime()});
+            filteredProjects.push(project[0].outerHTML);
+        })
+        
+    }
+
+        
+    filteredProjects = filteredProjects.join("");
+    document.querySelector("#projectList").innerHTML = filteredProjects;
+
+
+    document.querySelectorAll(".filterable").forEach(d=>{
+        if(filter === d.innerText.toLowerCase().replace(/\s/g, ""))d.children[0].classList.remove("right"), d.children[0].classList.add("down")
+        else d.children[0].classList.remove("down"), d.children[0].classList.add("right")
+    })
+    
+}
+
+
+document.querySelectorAll(".filterable").forEach(d=>{
+    d.onclick = filterProjects;
+})
+
