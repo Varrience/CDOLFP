@@ -67,7 +67,7 @@ function filterProjects(e){
     if(filter == "lastupdated"){
         //pjs.sort(function(a, b){return b-a});
         pjs.forEach(e => {
-            pjdata.push({element: e, date: (new Date(e.children[2].innerText.toLowerCase())).getTime()})
+            pjdata.push({element: e, date: (new Date(e.children[3].innerText.toLowerCase())).getTime()})
         })
         pjdata.sort(function(a,b){return b.date - a.date})
         pjdata.forEach(d => {
