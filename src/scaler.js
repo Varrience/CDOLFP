@@ -8,7 +8,7 @@ if(urlEmbed.includes("applab")) {
   embed.style["width"] = "356px"
   embed.style["height"] = "515px"
   embed.style["clip-path"] = "inset(68px 0px 0px 36px)"
-  embed.style["transform"] += "translate(-50%, -10%);"
+  //embed.style["transform"] += "translate(-50%, -10%);"
 } else {
   embed.style["height"] = "400px"
 }
