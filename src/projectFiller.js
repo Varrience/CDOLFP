@@ -66,12 +66,11 @@ function filterProjects(e){
     
     if(filter === "type") {
         pjs.forEach(d => {
-            pjdata.push(pjdata.push(d.children[2].innerText.toLowerCase()));
+            pjdata.push({element: d, type: pjdata.push(d.children[2].innerText.toLowerCase())});
         })
         pjdata.sort();
-        pjdata.forEach(p=>{
-            let project = pjs.filter(d =>{return p == d.children[2].innerText.toLowerCase()});
-            filteredProjects.push(project[0].outerHTML);
+        pjdata.forEach(p => {
+            filteredProjects.push(p.element.outerHTML);
         })
     }
 
