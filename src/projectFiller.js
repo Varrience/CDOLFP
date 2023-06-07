@@ -66,13 +66,11 @@ function filterProjects(e){
     
     if(filter === "type") {
         pjs.forEach(d => {
-            pjdata.push({element: d, type: pjdata.push(d.children[2].innerText.toLowerCase())});
+            pjdata.push({ element: d, type: d.children[2].innerText.toLowerCase()});
         })
         pjdata.sort();
         pjdata.forEach(p => {
-            console.log(p)
-            //filteredProjects.push(p.element.outerHTML);
-            
+            filteredProjects.push(p.element.outerHTML);
         })
     }
 
