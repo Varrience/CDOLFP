@@ -68,7 +68,7 @@ function filterProjects(e){
         pjs.forEach(d => {
             pjdata.push({ element: d, type: d.children[2].innerText.toLowerCase()});
         })
-        pjdata.sort();
+        pjdata.sort(function(a,b){return b.type > a.type});
         pjdata.forEach(p => {
             filteredProjects.push(p.element.outerHTML);
         })
