@@ -28,7 +28,7 @@ projectTable.innerHtml = "";
         </a>
        </th>
        <th>
-        <h3> ${project.projectType} <h3>
+        <h3> ${project.projectType} </h3>
        </th>
        <th>
         <p> ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} <p>
