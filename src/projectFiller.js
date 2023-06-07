@@ -70,7 +70,9 @@ function filterProjects(e){
         })
         pjdata.sort();
         pjdata.forEach(p => {
-            filteredProjects.push(p.element.outerHTML);
+            console.log(p)
+            //filteredProjects.push(p.element.outerHTML);
+            
         })
     }
 
