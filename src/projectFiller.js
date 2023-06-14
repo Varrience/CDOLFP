@@ -11,13 +11,11 @@ const ids = [
     `iZjuDMMMXnhhbFmGVxdng5p0VQg6HzWZMw3MuhOURl8`,
     `u4_bi8oMA13seaHIfpDd-d5lSdY5uTieMCPj61CP4fI`,
     `UtLZVcZnm63ZMOD8ptr3vHWOcEgY-Q6rF-Mei_18qVk`,
-    `5395oJsn6I1FuXArGI_nVslx55b9JClHO8iA8bVomn8`,
     `0IlNcGueKV8EP6cQbVoUAhOKIWLAS_oqHp6S4niGYFA`,
     `KU324flf8ldPBoj7naLwRwu7Ic6eNXi9tKI2CAxID7g`,
     `MEj7I3C5SBHIbNsnDrqmpU2HIH3gRWdlzMEkEhb_Pu8`,
     `59euJLwAANk66a99-w2VHZSBeuo7pBSDe66HkWVM68o`,
     `UVgyRh9fl6pwjGV9ddv9v03bYjdzgViuprP4M22KeeY`,
-    `Q3laBaq47f43JOBLZ8qzHlnfYk1eXvBZnaJ0TX5WS2Q`,
     `agOxyboI0lhvRgi0RQAgcFpUeAU-YyDVW23WcFiIC7Q`,
     `cPWV-7dGu5ljo_J6X6v0fFCCsQEHdTI8-oU1tha0ORA`,
     `P_exOkM4kAtJ7giCa2wA2uq4rLoNk75TaXhOY7KQvNY`,
@@ -39,7 +37,9 @@ const ids = [
     `8LRX6XuJgHoMee42iEoPSZyRkMRRuhoBaYTKcZ5j8gg`,
     `ENAOsSrwXxYELVRdf3b2-1tZ2fKAWOjMtJRWiPGI5mo`,
     `R-X-H4kMagfDZ47RLmfIjjov5d9WZsprljmACjTO1_s`,
-    `PS06tbx8mcL9oGsEKAEXB1zhxEa0HaoFOvk6V1qOudg`
+    `PS06tbx8mcL9oGsEKAEXB1zhxEa0HaoFOvk6V1qOudg`,
+    `IExrDST9FiewhwPTHog3pO-qK7KPSop1JuiwBFRU_Co`,
+    `9wYVFlsoUmmbYTKcyKmIal-JlvecSCV0gSoJTWwE-ls`
 ]
 const API = "https://fetch-proxy.jacobbutler6.repl.co/json?url=https://studio.code.org/v3/channels/"
 const projectTable = document.querySelector("#projectList");
