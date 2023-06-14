@@ -2,8 +2,21 @@
 const urlEmbed = `${location.search.match(/(?<=url=)[^&]*/g)}/embed`
 const embed = document.querySelector("#game");
 const aspect = Math.min(window.innerWidth, window.innerHeight);
+const id = urlEmbed.match(/.{43}(?=\/embed)/g)[0];
+fetch(`https://fetch-proxy.jacobbutler6.repl.co/json?url=https://studio.code.org/v3/channels/${id}`)
+.then(response => {
+  if (response.status < 206) {
+    return response.json()
+  }
+})
+.then(json => {
+  document.title = json.name
+})
+.catch(err => {
+  console.log(err)
+})
 embed.src = urlEmbed;
-if(urlEmbed.includes("applab")) {
+if (urlEmbed.includes("applab")) {
   embed.style["position"] = "fixed";
   embed.style["top"] = "0px"
   embed.style["left"] = "50%"
