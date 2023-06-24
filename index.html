@@ -32,7 +32,13 @@
 <body style="background: black;font-family: 'Roboto';">
   <h1>Featured List</h1>
   <input style="position: absolute; top: 4vh; left: 50%; width: 30vw; height: 4vh; transform: translateX(-50%); text-align: center;" id="search" placeholder="Search All Projects">
-  </input> 
+  </input>
+  <label for="searchby"></label>
+  <select id="searchby" style="position: absolute;top: 4vh;left: 65vw;height: 4.5vh;">
+   <option value="projectName"> Name </option>
+   <option value="projectType"> Type </option>
+   <option value="projectUpdated"> Last Updated </option>
+  </select>   
   <table>
     <thead>
       <tr>
