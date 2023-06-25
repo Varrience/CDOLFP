@@ -158,6 +158,5 @@ function searchAll() {
 document.querySelectorAll(".filterable").forEach(d=>{
     d.onclick = filterProjects;
 })
-
-document.querySelector("#search").onchange = searchAll;
+document.querySelector("#search").oninput = searchAll;
 document.querySelector("#searchby").onchange = searchAll;
