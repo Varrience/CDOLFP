@@ -88,48 +88,57 @@ projectTable.innerHtml = "";
     })(0)
 
 
-function filterProjects(e){
+function filterProjects(e) {
     let filter = e.srcElement.innerText.toLowerCase().replace(/\s/g, "") || e.srcElement.parentElement.innerText.toLowerCase().replace(/\s/g, "");
     let pjs = Array.from(document.querySelector("#projectList").children);
     let pjdata = Array();
     let filteredProjects = Array();
 
-    if(filter === "name"){
+    if (filter === "name") {
 
         pjs.forEach(d => pjdata.push(d.children[1].innerText.toLowerCase()));
         pjdata.sort();
-        
-        pjdata.forEach(p=>{
-            let project = pjs.filter(d =>{return p == d.children[1].innerText.toLowerCase()});
+
+        pjdata.forEach(p => {
+            let project = pjs.filter(d => { return p == d.children[1].innerText.toLowerCase() });
             filteredProjects.push(project[0].outerHTML);
         })
 
     }
-    
-    if(filter === "type") {
+
+    if (filter === "type") {
         pjs.forEach(d => {
-            pjdata.push({ element: d, type: d.children[2].innerText.toLowerCase()});
+            pjdata.push({ element: d, type: d.children[2].innerText.toLowerCase() });
         })
-        pjdata.sort(function(a,b){return b.type < a.type});
+        pjdata.sort(function (a, b) { return b.type < a.type });
         pjdata.forEach(p => {
             filteredProjects.push(p.element.outerHTML);
         })
     }
 
-    if(filter === "lastupdated"){
+    if (filter === "lastupdated") {
         //pjs.sort(function(a, b){return b-a});
         pjs.forEach(e => {
-            pjdata.push({element: e, date: (new Date(e.children[3].innerText.toLowerCase())).getTime()})
+            pjdata.push({ element: e, date: (new Date(e.children[3].innerText.toLowerCase())).getTime() })
         })
-        pjdata.sort(function(a,b){return b.date - a.date})
+        pjdata.sort(function (a, b) { return b.date - a.date })
         pjdata.forEach(d => {
             filteredProjects.push(d.element.outerHTML)
         })
     }
+    filteredProjects = filteredProjects.join("");
+    document.querySelector("#projectList").innerHTML = filteredProjects;
+
+    document.querySelectorAll(".filterable").forEach(d => {
+        if (filter === d.innerText.toLowerCase().replace(/\s/g, "")) d.children[0].classList.remove("right"), d.children[0].classList.add("down")
+        else d.children[0].classList.remove("down"), d.children[0].classList.add("right")
+    })
+
+}
 
 function searchAll() {
     let searchBy = document.querySelector("#searchby").selectedIndex;
-    if (searchBy < 1) {return}
+    if (searchBy < 1) { return }
     let search = document.querySelector("#search").value;
     let projects = Array.from(document.querySelector("#projectList").children)
     projects.forEach(p => {
@@ -143,20 +152,8 @@ function searchAll() {
     })
 }
 
-        
-    filteredProjects = filteredProjects.join("");
-    document.querySelector("#projectList").innerHTML = filteredProjects;
-
-    document.querySelectorAll(".filterable").forEach(d=>{
-        if(filter === d.innerText.toLowerCase().replace(/\s/g, ""))d.children[0].classList.remove("right"), d.children[0].classList.add("down")
-        else d.children[0].classList.remove("down"), d.children[0].classList.add("right")
-    })
-    
-}
-
-
 document.querySelectorAll(".filterable").forEach(d=>{
     d.onclick = filterProjects;
 })
-document.querySelector("#search").oninput = searchAll;
+document.querySelector("#search").onchange = searchAll;
 document.querySelector("#searchby").onchange = searchAll;
