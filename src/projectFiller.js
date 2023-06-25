@@ -147,10 +147,7 @@ function searchAll() {
     filteredProjects = filteredProjects.join("");
     document.querySelector("#projectList").innerHTML = filteredProjects;
 
-    document.querySelector("#search").addEventListener("change", (v) => {
-        console.log(v);
-        searchAll();
-    });
+    document.querySelector("#search").onchange = searchAll;
     document.querySelector("#searchby").addEventListener("change", () => {
         searchAll();
     });
