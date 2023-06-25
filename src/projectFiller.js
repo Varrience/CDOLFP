@@ -147,10 +147,10 @@ function searchAll() {
     filteredProjects = filteredProjects.join("");
     document.querySelector("#projectList").innerHTML = filteredProjects;
 
-    document.querySelector("#search").onchange = searchAll;
-    document.querySelector("#searchby").addEventListener("change", () => {
-        searchAll();
-    });
+    // document.querySelector("#search").onchange = searchAll;
+    // document.querySelector("#searchby").addEventListener("change", () => {
+    //     searchAll();
+    // });
 
     document.querySelectorAll(".filterable").forEach(d=>{
         if(filter === d.innerText.toLowerCase().replace(/\s/g, ""))d.children[0].classList.remove("right"), d.children[0].classList.add("down")
