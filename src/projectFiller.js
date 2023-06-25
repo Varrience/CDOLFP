@@ -129,6 +129,7 @@ function filterProjects(e){
 
 function searchAll() {
     let searchBy = document.querySelector("#searchby").selectedIndex;
+    if (searchBy < 1) {return}
     let search = document.querySelector("#search").value;
     let projects = Array.from(document.querySelector("#projectList").children)
     projects.forEach(p => {
@@ -136,7 +137,7 @@ function searchAll() {
         let content = column[searchBy].innerText;
         if (content.includes(search)) {
             p.style.display = "table-row";
-        } else if (searchBy > 0){
+        } else {
             p.style.display = "none";
         }
     })
@@ -146,7 +147,8 @@ function searchAll() {
     filteredProjects = filteredProjects.join("");
     document.querySelector("#projectList").innerHTML = filteredProjects;
 
-    document.querySelector("#search").addEventListener("change", () => {
+    document.querySelector("#search").addEventListener("change", (v) => {
+        console.log(v);
         searchAll();
     });
     document.querySelector("#searchby").addEventListener("change", searchAll);
