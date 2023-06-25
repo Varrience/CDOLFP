@@ -129,14 +129,14 @@ function filterProjects(e){
 
 function searchAll() {
     let searchBy = document.querySelector("#searchby").selectedIndex;
-    let search = document.querySelector("#search").innerText;
+    let search = document.querySelector("#search").value;
     let projects = Array.from(document.querySelector("#projectList").children)
     projects.forEach(p => {
         let column = p.children;
         let content = column[searchBy].innerText;
-        if (content.includes(search) || searchBy < 1) {
+        if (content.includes(search)) {
             p.style.display = "table-row";
-        } else {
+        } else if (searchBy > 0){
             p.style.display = "none";
         }
     })
