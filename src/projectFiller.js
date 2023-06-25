@@ -132,12 +132,12 @@ function searchAll() {
     let search = document.querySelector("#search").innerText;
     let projects = Array.from(document.querySelector("#projectList").children)
     projects.forEach(p => {
-        let column = p[searchBy];
-        let content = column.innerText;
+        let column = p.chilren;
+        let content = column[searchBy].innerText;
         if (content.includes(search) || searchBy < 1) {
-            column.style.display = "table-row";
+            p.style.display = "table-row";
         } else {
-            column.style.display = "none";
+            p.style.display = "none";
         }
     })
 }
