@@ -143,9 +143,9 @@ function searchAll() {
     projects.forEach(p => {
         let column = p.children;
         let content = column[searchBy].innerText;
-        if (content.includes(search)) {
+        if (content.includes(search) || searchBy < 1) {
             p.style.display = "table-row";
-        } else if (searchBy > 0) {
+        } else {
             p.style.display = "none";
         }
     })
