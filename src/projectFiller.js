@@ -132,7 +132,7 @@ function searchAll() {
     let search = document.querySelector("#search").innerText;
     let projects = Array.from(document.querySelector("#projectList").children)
     projects.forEach(p => {
-        let column = p.chilren;
+        let column = p.children;
         let content = column[searchBy].innerText;
         if (content.includes(search) || searchBy < 1) {
             p.style.display = "table-row";
