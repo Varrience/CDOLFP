@@ -127,29 +127,29 @@ function filterProjects(e){
         })
     }
 
-function searchAll() {
-    let searchBy = document.querySelector("#searchby").selectedIndex;
-    let search = document.querySelector("#search").innerText;
-    let projects = Array.from(document.querySelector("#projectList").children)
-    projects.forEach(p => {
-        let column = p[searchBy];
-        let content = column.innerText;
-        if (content.includes(search) || searchBy < 1) {
-            column.style.display = "table-row";
-        } else {
-            column.style.display = "none";
-        }
-    })
-}
+// function searchAll() {
+//     let searchBy = document.querySelector("#searchby").selectedIndex;
+//     let search = document.querySelector("#search").innerText;
+//     let projects = Array.from(document.querySelector("#projectList").children)
+//     projects.forEach(p => {
+//         let column = p[searchBy];
+//         let content = column.innerText;
+//         if (content.includes(search) || searchBy < 1) {
+//             column.style.display = "table-row";
+//         } else {
+//             column.style.display = "none";
+//         }
+//     })
+// }
 
         
     filteredProjects = filteredProjects.join("");
     document.querySelector("#projectList").innerHTML = filteredProjects;
 
-    document.querySelector("#search").addEventListener("change", () => {
-        searchAll();
-    });
-    document.querySelector("#searchby").addEventListener("change", searchAll);
+    // document.querySelector("#search").addEventListener("change", () => {
+    //     searchAll();
+    // });
+    // document.querySelector("#searchby").addEventListener("change", searchAll);
 
     document.querySelectorAll(".filterable").forEach(d=>{
         if(filter === d.innerText.toLowerCase().replace(/\s/g, ""))d.children[0].classList.remove("right"), d.children[0].classList.add("down")
