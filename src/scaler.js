@@ -48,7 +48,17 @@ document.querySelector("#assets").onclick = function() {
       return response.json();
     }
   }).then(data => {
-    document.querySelector("#content").innerHTML = data;
+    let content = "";
+    for(let media of data) {
+      if(media.category === "image") {
+        content += `<img src=${sourceAPI}media?url=${host}/${media.filename}></img>`
+      } else {
+        content += `<audio controls>
+        <source src=${sourceAPI}media?url=${host}/${media.filename}></source>
+        </audio>`
+      }
+    }
+    document.querySelector("#content").innerHTML = content;
   })
 }
 // Show all animations in a project
