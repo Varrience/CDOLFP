@@ -41,10 +41,20 @@ document.querySelector("#back").onclick = function() {
 // Show source code
 
 // Show any assets used outside of animations
-
+document.querySelector("#assets").onclick = function() {
+  let host = `https://studio.code.org/v3/assets/${id}`
+  fetch(`${sourceAPI}json?url=${host}`).then(response => {
+    if(response.status < 206) {
+      return response.json();
+    }
+  }).then(data => {
+    document.querySelector("#content").innerHTML = data;
+  })
+}
 // Show all animations in a project
 document.querySelector("#animations").onclick = function() {
-  fetch(`${sourceAPI}json?url=https://studio.code.org/v3/animations/${id}`).then(response => {
+  let host = `https://studio.code.org/v3/animations/${id}`
+  fetch(`${sourceAPI}json?url=${host}`).then(response => {
     if(response.status < 206) {
       return response.json();
     }
@@ -52,7 +62,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${sourceAPI}/media?url=https://studio.code.org/v3/animations/${id}/${image.filename}></image>`;
+        content += `<img src=${sourceAPI}/media?url=${host}/${image.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content;
