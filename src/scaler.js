@@ -50,10 +50,12 @@ document.querySelector("#assets").onclick = function() {
   }).then(data => {
     let content = "";
     for(let media of data) {
+      content += `<p> ${media.filename} </p>`
       if(media.category === "image") {
         content += `<img src=${sourceAPI}media?url=${host}/${media.filename}></img>`
       } else {
-        content += `<audio controls>
+        content += `
+        <audio controls>
         <source src=${sourceAPI}media?url=${host}/${media.filename}></source>
         </audio>`
       }
@@ -72,7 +74,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${sourceAPI}/media?url=${host}/${image.filename}></image>`;
+        content += `<img src=${sourceAPI}/media?url=${host}/${image.filename} alt=${media.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content;
