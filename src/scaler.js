@@ -1,4 +1,5 @@
 // Upscales CDO project, this will have to be dynamic depending on the projects aspect ratio
+const sourceAPI = `https://studio.code.org/v3/`;
 const urlEmbed = `${location.search.match(/(?<=url=)[^&]*/g)}/embed`
 const embed = document.querySelector("#game");
 const aspect = Math.min(window.innerWidth, window.innerHeight);
@@ -32,7 +33,23 @@ if (urlEmbed.includes("applab")) {
   embed.style["transform"] = `scale(${scale})`;
 }
 embed.style["transform-origin"] = `top center`;
-// Action Buttons
+// To main page
 document.querySelector("#back").onclick = function() {
   location.href = "/CDOLFP"
 }
+
+// Show source code
+
+// Show any assets used outside of animations
+
+// Show all animations in a project
+document.querySelector("#animations").onclick = function() {
+  fetch(`${sourceAPI}animations/${id}`).then(response => {
+    if(response.status < 206) {
+      return response.json();
+    }
+  }).then(data => {
+    document.querySelector("#animations").innerHTML = data;
+  })
+}
+// Show relevant info if it was published as a library
