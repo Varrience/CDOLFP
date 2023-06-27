@@ -74,7 +74,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${sourceAPI}/media?url=${host}/${image.filename} alt=${media.filename}></image>`;
+        content += `<img src=${sourceAPI}media?url=${host}/${image.filename} alt=${media.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content;
