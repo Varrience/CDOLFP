@@ -1,5 +1,5 @@
 // Upscales CDO project, this will have to be dynamic depending on the projects aspect ratio
-const sourceAPI = `https://fetch-proxy.jacobbutler6.repl.co/json?url=https://studio.code.org/v3/`;
+const sourceAPI = `https://fetch-proxy.jacobbutler6.repl.co/`;
 const urlEmbed = `${location.search.match(/(?<=url=)[^&]*/g)}/embed`
 const embed = document.querySelector("#game");
 const aspect = Math.min(window.innerWidth, window.innerHeight);
@@ -44,12 +44,18 @@ document.querySelector("#back").onclick = function() {
 
 // Show all animations in a project
 document.querySelector("#animations").onclick = function() {
-  fetch(`${sourceAPI}animations/${id}`).then(response => {
+  fetch(`${sourceAPI}json?url=https://studio.code.org/v3/animations/${id}`).then(response => {
     if(response.status < 206) {
       return response.json();
     }
   }).then(data => {
-    document.querySelector("#content").innerHTML = data;
+    let content = "";
+    for(let image of data) {
+      if(image.filename !== undefined) {
+        content += `<img src=${sourceAPI}/blob?url=${image.filename}></image>`;
+      }
+    }
+    document.querySelector("#content").innerHTML = content;
   })
 }
 // Show relevant info if it was published as a library
