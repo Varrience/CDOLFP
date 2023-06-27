@@ -1,5 +1,5 @@
 // Upscales CDO project, this will have to be dynamic depending on the projects aspect ratio
-const sourceAPI = `https://studio.code.org/v3/`;
+const sourceAPI = `https://fetch-proxy.jacobbutler6.repl.co/json?url=https://studio.code.org/v3/`;
 const urlEmbed = `${location.search.match(/(?<=url=)[^&]*/g)}/embed`
 const embed = document.querySelector("#game");
 const aspect = Math.min(window.innerWidth, window.innerHeight);
