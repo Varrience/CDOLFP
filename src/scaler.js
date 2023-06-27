@@ -46,7 +46,7 @@ document.querySelector("#sources").onclick = function() {
       return response.json();
     }
   }).then(data => {
-    document.querySelector("#content").innerHTML = `<code>${data}</code>`
+    document.querySelector("#content").innerHTML = `<code>${JSON.stringify(data)}</code>`
   })
 }
 
