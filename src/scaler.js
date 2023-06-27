@@ -52,7 +52,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${sourceAPI}/blob?url=https://studio.code.org/v3/animations/${image.filename}></image>`;
+        content += `<img src=${sourceAPI}/media?url=https://studio.code.org/v3/animations/${id}/${image.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content;
