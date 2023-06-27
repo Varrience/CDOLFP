@@ -49,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
       return response.json();
     }
   }).then(data => {
-    document.querySelector("#animations").innerHTML = data;
+    document.querySelector("#content").innerHTML = data;
   })
 }
 // Show relevant info if it was published as a library
