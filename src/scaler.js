@@ -40,8 +40,8 @@ document.querySelector("#back").onclick = function() {
 
 // Show source code
 document.querySelector("#sources").onclick = function() {
-  let host = `https://studio.code.org/v3/sources/${id}`
-  fetch(`${sourceAPI}json?url=${host}/main.json`).then(response => {
+  let host = `https://studio.code.org/v3/sources/${id}/main.json`
+  fetch(`${sourceAPI}json?url=${host}`).then(response => {
     if(response.status < 206) {
       return response.json();
     }
@@ -91,3 +91,13 @@ document.querySelector("#animations").onclick = function() {
   })
 }
 // Show relevant info if it was published as a library
+document.querySelector("#libraries").onclick = function() {
+ let host = `https://studio.code.org/v3/libraries/${id}`;
+ fetch(`${sourceAPI}json?url=${host}`).then(response => {
+    if(response.status < 206) {
+      return response.json();
+    }
+  }).then(data => {
+    document.querySelector("#content").innerHTML = `<code>${JSON.stringify(data)}</code>`
+  })
+}
