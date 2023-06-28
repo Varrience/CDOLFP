@@ -35,15 +35,3 @@ embed.style["transform-origin"] = `top center`;
 document.querySelector("#back").onclick = function() {
   location.href = "/CDOLFP"
 }
-
-// Show source code
-document.querySelector("#sources").onclick = function() {
-  let host = `https://studio.code.org/v3/sources/${id}/main.json`
-  fetch(`${sourceAPI}json?url=${host}`).then(response => {
-    if(response.status < 206) {
-      return response.json();
-    }
-  }).then(data => {
-    document.querySelector("#content").innerHTML = `<code>${JSON.stringify(data)}</code>`
-  })
-}
