@@ -1,5 +1,9 @@
 const sourceAPI = `https://fetch-proxy.jacobbutler6.repl.co/`;
 const hostAPI = `https://studio.code.org/v3/`;
+// To main page
+document.querySelector("#back").onclick = function() {
+  location.href = "/CDOLFP"
+}
 // Show source code
 document.querySelector("#sources").onclick = function() {
   let host = `https://studio.code.org/v3/sources/${id}/main.json`
