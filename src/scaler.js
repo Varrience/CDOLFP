@@ -31,7 +31,3 @@ if (urlEmbed.includes("applab")) {
   embed.style["transform"] = `scale(${scale})`;
 }
 embed.style["transform-origin"] = `top center`;
-// To main page
-document.querySelector("#back").onclick = function() {
-  location.href = "/CDOLFP"
-}
