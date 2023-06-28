@@ -51,3 +51,7 @@ document.querySelector("#libraries").onclick = function() {
     document.querySelector("#content").innerHTML = `<code>${JSON.stringify(data)}</code>`
   })
 }
+// Clear output in content frame
+document.querySelector("#clear").onclick = function() {
+  document.querySelector("#content").innerHTML = "";
+}
