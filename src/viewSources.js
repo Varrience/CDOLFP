@@ -49,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
       }
     }
     document.querySelector("#content").innerHTML = content || "<p> No Animations </p>";
-  })f
+  })
 }
 // Show relevant info if it was published as a library
 document.querySelector("#libraries").onclick = function() {
