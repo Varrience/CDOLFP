@@ -70,3 +70,7 @@ document.querySelector("#libraries").onclick = function() {
 document.querySelector("#clear").onclick = function() {
   document.querySelector("#content").innerHTML = "";
 }
+// Reload the game frame
+document.querySelector("#reload").onclick = () => {
+    document.querySelector("#game").src = urlEmbed;
+}
