@@ -74,3 +74,15 @@ document.querySelector("#clear").onclick = function() {
 document.querySelector("#reload").onclick = function() {
     document.querySelector("#game").src = urlEmbed;
 }
+// View the origin project
+document.querySelector("#origin").onclick = function() {
+    window.href = urlEmbed.match(/.*(?=embed)/)[0];
+}
+// Remix the project on the site (requires an account for this to work)
+document.querySelector("#fork").onclick = function() {
+    window.href = urlEmbed.match(/.*(?=embed)/)[0] + "/remix";
+}
+// Exports the project on the main page so you don't have to own an account to host it
+document.querySelector("#export").onclick = function () {
+    
+}
