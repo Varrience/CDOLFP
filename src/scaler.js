@@ -3,6 +3,7 @@ const urlEmbed = `${location.search.match(/(?<=url=)[^&]*/g)}/embed`
 const embed = document.querySelector("#game");
 const aspect = Math.min(window.innerWidth, window.innerHeight);
 const id = urlEmbed.match(/.{43}(?=\/embed)/g)[0];
+let channel = null;
 fetch(`https://fetch-proxy.jacobbutler6.repl.co/json?url=https://studio.code.org/v3/channels/${id}`)
 .then(response => {
   if (response.status < 206) {
@@ -10,7 +11,8 @@ fetch(`https://fetch-proxy.jacobbutler6.repl.co/json?url=https://studio.code.org
   }
 })
 .then(json => {
-  document.title = json.name
+  channel = json;
+  document.title = channel.name
 })
 .catch(err => {
   console.log(err)
