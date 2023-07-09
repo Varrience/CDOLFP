@@ -39,7 +39,8 @@ const ids = [
     `R-X-H4kMagfDZ47RLmfIjjov5d9WZsprljmACjTO1_s`,
     `PS06tbx8mcL9oGsEKAEXB1zhxEa0HaoFOvk6V1qOudg`,
     `IExrDST9FiewhwPTHog3pO-qK7KPSop1JuiwBFRU_Co`,
-    `9wYVFlsoUmmbYTKcyKmIal-JlvecSCV0gSoJTWwE-ls`
+    `9wYVFlsoUmmbYTKcyKmIal-JlvecSCV0gSoJTWwE-ls`,
+    `fcX0FPfMdGiG0SRO4_eBBytwC0b9bNrtkXSG2Sp89WA`
 ]
 const API = "https://fetch-proxy.jacobbutler6.repl.co/json?url=https://studio.code.org/v3/channels/"
 const projectTable = document.querySelector("#projectList");
