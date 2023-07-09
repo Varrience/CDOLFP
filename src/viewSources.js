@@ -84,17 +84,19 @@ document.querySelector("#fork").onclick = function() {
 }
 // Exports the project on the main page so you don't have to own an account to host it
 document.querySelector("#export").onclick = function () {
-  return new Promise(resolve, reject) {
-    let type = urlEmbed.includes("applab") ? "applab": "gamelab";
-    fetch(`https://cdo-expo.jacobbutler6.repl.co/${type}/${id}`)
-      .then(response => {
-        if(response.status < 206) {return response.blob()}
-      })
-      .then(data => {
-        resolve(data);
-      })
-      .catch(err => {
-        reject(err);
-      })
-  }
+  let type = urlEmbed.includes("applab") ? "applab": "gamelab";
+  window.location.href = `https://cdo-expo.jacobbutler6.repl.co/${type}/${id}`;
+  // return new Promise(resolve, reject) {
+  //   let type = urlEmbed.includes("applab") ? "applab": "gamelab";
+  //   fetch(`https://cdo-expo.jacobbutler6.repl.co/${type}/${id}`)
+  //     .then(response => {
+  //       if(response.status < 206) {return response.blob()}
+  //     })
+  //     .then(data => {
+  //       resolve(data);
+  //     })
+  //     .catch(err => {
+  //       reject(err);
+  //     })
+  // }
 }
