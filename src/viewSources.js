@@ -1,4 +1,4 @@
-const sourceAPI = `https://fetch-proxy.jacobbutler6.repl.co/`;
+const sourceAPI = `https://corsproxy.io/?url=`; //`https://fetch-proxy.jacobbutler6.repl.co/`;
 const hostAPI = `https://studio.code.org/v3/`;
 // To main page
 document.querySelector("#back").onclick = function() {
@@ -7,7 +7,7 @@ document.querySelector("#back").onclick = function() {
 // Show source code
 document.querySelector("#sources").onclick = function() {
   let host = `https://studio.code.org/v3/sources/${id}/main.json`
-  fetch(`${sourceAPI}json?url=${host}`).then(response => {
+  fetch(sourceAPI + host}).then(response => {
     if(response.status < 206) {
       return response.json();
     }
@@ -18,7 +18,7 @@ document.querySelector("#sources").onclick = function() {
 // Show any assets used outside of animations
 document.querySelector("#assets").onclick = function() {
   let host = `${hostAPI}/assets/${id}`
-  fetch(`${sourceAPI}json?url=${host}`).then(response => {
+  fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
     }
@@ -41,7 +41,7 @@ document.querySelector("#assets").onclick = function() {
 // Show all animations in a project
 document.querySelector("#animations").onclick = function() {
   let host = `${hostAPI}animations/${id}`
-  fetch(`${sourceAPI}json?url=${host}`).then(response => {
+  fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
     }
@@ -49,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${sourceAPI}media?url=${host}/${image.filename}></image>`;
+        content += `<img src=${sourceAPI + host}/${image.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content || "<p> No Animations </p>";
@@ -58,7 +58,7 @@ document.querySelector("#animations").onclick = function() {
 // Show relevant info if it was published as a library
 document.querySelector("#libraries").onclick = function() {
  let host = `${hostAPI}libraries/${id}`;
- fetch(`${sourceAPI}json?url=${host}`).then(response => {
+ fetch(${sourceAPI + host}).then(response => {
     if(response.status < 206) {
       return response.json();
     }
