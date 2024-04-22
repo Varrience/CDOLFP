@@ -17,7 +17,7 @@ document.querySelector("#sources").onclick = function() {
 }
 // Show any assets used outside of animations
 document.querySelector("#assets").onclick = function() {
-  let host = `${hostAPI}/assets/${id}`
+  let host = `${hostAPI}assets/${id}/`
   fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
@@ -40,7 +40,7 @@ document.querySelector("#assets").onclick = function() {
 }
 // Show all animations in a project
 document.querySelector("#animations").onclick = function() {
-  let host = `${hostAPI}animations/${id}`
+  let host = `${hostAPI}animations/${id}/`
   fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
