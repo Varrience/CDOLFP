@@ -27,7 +27,7 @@ document.querySelector("#assets").onclick = function() {
     for(let media of data) {
       content += `<p> ${media.filename} </p>`
       if(media.category === "image") {
-        content += `<img src=${host}/${media.filename}></img>`
+        content += `<img src=${host}/${media.filename} style="max-width: 100%"></img>`
       } else {
         content += `
         <audio controls>
@@ -49,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${host}/${image.filename}></image>`;
+        content += `<img src=${host}/${image.filename} style="max-width: 100%"></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content || "<p> No Animations </p>";
