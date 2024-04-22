@@ -31,7 +31,7 @@ document.querySelector("#assets").onclick = function() {
       } else {
         content += `
         <audio controls>
-        <source src=${sourceAPI}media?url=${host}/${media.filename}></source>
+        <source src=${sourceAPI + host + media.filename}></source>
         </audio>`
       }
     }
@@ -49,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${sourceAPI + host}/${image.filename}></image>`;
+        content += `<img src=${sourceAPI + host + image.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content || "<p> No Animations </p>";
