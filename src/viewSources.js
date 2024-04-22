@@ -1,4 +1,4 @@
-const sourceAPI = `http://www.whateverorigin.org/get?url=`; //`https://fetch-proxy.jacobbutler6.repl.co/`;
+const sourceAPI = `https://corsproxy.io/?url=`; //`https://fetch-proxy.jacobbutler6.repl.co/`;
 const hostAPI = `https://studio.code.org/v3/`;
 // To main page
 document.querySelector("#back").onclick = function() {
@@ -27,11 +27,11 @@ document.querySelector("#assets").onclick = function() {
     for(let media of data) {
       content += `<p> ${media.filename} </p>`
       if(media.category === "image") {
-        content += `<img src=${sourceAPI + host + media.filename}></img>`
+        content += `<img src=${host + media.filename}></img>`
       } else {
         content += `
         <audio controls>
-        <source src=${sourceAPI + host + media.filename}></source>
+        <source src=${host + media.filename}></source>
         </audio>`
       }
     }
@@ -49,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${sourceAPI + host + image.filename}></image>`;
+        content += `<img src=${host + image.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content || "<p> No Animations </p>";
