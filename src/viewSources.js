@@ -7,7 +7,7 @@ document.querySelector("#back").onclick = function() {
 // Show source code
 document.querySelector("#sources").onclick = function() {
   let host = `https://studio.code.org/v3/sources/${id}/main.json`
-  fetch(sourceAPI + host}).then(response => {
+  fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
     }
@@ -58,7 +58,7 @@ document.querySelector("#animations").onclick = function() {
 // Show relevant info if it was published as a library
 document.querySelector("#libraries").onclick = function() {
  let host = `${hostAPI}libraries/${id}`;
- fetch(${sourceAPI + host}).then(response => {
+ fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
     }
