@@ -42,7 +42,7 @@ const ids = [
     `9wYVFlsoUmmbYTKcyKmIal-JlvecSCV0gSoJTWwE-ls`,
     `fcX0FPfMdGiG0SRO4_eBBytwC0b9bNrtkXSG2Sp89WA`
 ]
-const API = "https://studio.code.org/v3/channels/"; //https://fetch-proxy.jacobbutler6.repl.co/json?url=
+const API = "https://corsproxy.io/?url=https://studio.code.org/v3/channels/"; //https://fetch-proxy.jacobbutler6.repl.co/json?url=
 const projectTable = document.querySelector("#projectList");
 projectTable.innerHtml = "";
     // Loop through the projects array and create table rows with thumbnails
