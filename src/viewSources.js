@@ -17,7 +17,7 @@ document.querySelector("#sources").onclick = function() {
 }
 // Show any assets used outside of animations
 document.querySelector("#assets").onclick = function() {
-  let host = `${hostAPI}assets/${id}/`
+  let host = `${hostAPI}assets/${id}`
   fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
@@ -27,11 +27,11 @@ document.querySelector("#assets").onclick = function() {
     for(let media of data) {
       content += `<p> ${media.filename} </p>`
       if(media.category === "image") {
-        content += `<img src=${host + media.filename}></img>`
+        content += `<img src=${host}/${media.filename}></img>`
       } else {
         content += `
         <audio controls>
-        <source src=${host + media.filename}></source>
+        <source src=${host}/${media.filename}></source>
         </audio>`
       }
     }
@@ -40,7 +40,7 @@ document.querySelector("#assets").onclick = function() {
 }
 // Show all animations in a project
 document.querySelector("#animations").onclick = function() {
-  let host = `${hostAPI}animations/${id}/`
+  let host = `${hostAPI}animations/${id}`
   fetch(sourceAPI + host).then(response => {
     if(response.status < 206) {
       return response.json();
@@ -49,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${host + image.filename}></image>`;
+        content += `<img src=${host}/${image.filename}></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content || "<p> No Animations </p>";
