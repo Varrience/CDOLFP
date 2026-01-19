@@ -76,7 +76,6 @@ projectTable.innerHtml = "";
        </th>
        <th>
         <p> ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} <p>
-       </th>
       `
       projectTable.appendChild(entry);
     //   projectTable.innerHTML += `
