@@ -5,13 +5,13 @@ self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
 });
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(cacheNames.filter((name) => name !== CACHE).map((name) => caches.delete(name)));
-    }),
-  );
-});
+// self.addEventListener('activate', (event) => {
+//   event.waitUntil(
+//     caches.keys().then((cacheNames) => {
+//       return Promise.all(cacheNames.filter((name) => name !== CACHE).map((name) => caches.delete(name)));
+//     }),
+//   );
+// });
 
 self.addEventListener('fetch', event => {
   const { request } = event;
