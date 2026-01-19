@@ -59,7 +59,8 @@ projectTable.innerHtml = "";
       if(project == undefined) {return}
       let date = new Date(project.updatedAt);
       const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-      projectTable.innerHTML += `
+      const entry = document.create.element("tr");
+      entry.innerHTML = `
       <tr>
        <th>
         <a href=${location.pathname}project?url=https://studio.code.org${project.level}/${source}>
@@ -78,6 +79,26 @@ projectTable.innerHtml = "";
         <p> ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} <p>
        </th>
       `
+      projectTable.appendChild(entry);
+    //   projectTable.innerHTML += `
+    //   <tr>
+    //    <th>
+    //     <a href=${location.pathname}project?url=https://studio.code.org${project.level}/${source}>
+    //      <img class=project-thumbnail src=https://corsproxy.io?url=https://studio.code.org${project.thumbnailUrl} alt=${project.name}_Thumbnail loading=lazy></img>
+    //     </a>
+    //    </th>
+    //    <th>
+    //     <a href=https://studio.code.org${project.level}/${source}>
+    //      <h2> ${project.name} </h2>
+    //     </a>
+    //    </th>
+    //    <th>
+    //     <h3> ${project.projectType} </h3>
+    //    </th>
+    //    <th>
+    //     <p> ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} <p>
+    //    </th>
+    //   `
       })
       .catch(err => {
         console.log(err);
