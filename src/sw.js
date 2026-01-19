@@ -30,17 +30,18 @@ self.addEventListener('fetch', event => {
         })
         .catch(() => {
           // Network failed, try cache
-          return caches.match(request)
-            .then(cached => {
-              if (cached) {
-                return cached;
-              }
-              // Both failed, return offline response
-              return new Response('Offline', {
-                status: 503,
-                statusText: 'Service Unavailable'
-              });
-            });
+          return caches.open(CACHE).then(cache => cache.match(request)}
+          // return caches.match(request)
+          //   .then(cached => {
+          //     if (cached) {
+          //       return cached;
+          //     }
+          //     // Both failed, return offline response
+          //     return new Response('Offline', {
+          //       status: 503,
+          //       statusText: 'Service Unavailable'
+          //     });
+          //   });
         })
     );
 });
