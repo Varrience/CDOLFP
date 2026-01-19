@@ -1,0 +1,9 @@
+{
+  "name":"CDO Legacy Featured Projects",
+  "short_name":"CDOLFP",
+  "icons":[],
+  "theme_color":"#151515",
+  "background_color":"#151515",
+  "categories": ["programming", "education", "entertainment", "games", "social"],
+  "display":"fullscreen"
+}
