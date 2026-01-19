@@ -26,15 +26,15 @@
       text-decoration: none;
     }
   </style>
-  <link href="./favicon.ico" rel="icon">
-  <link href="./favicon.ico" rel="shortcut icon">
+  <link href="favicon.ico" rel="icon">
+  <link href="favicon.ico" rel="shortcut icon">
   <link href="manifest.webmanifest" rel="manifest">
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-  <link href='./public/style.css' rel='stylesheet'>
+  <link href='public/style.css' rel='stylesheet'>
 </head>
 <body style="background: black;font-family: 'Roboto';">
   <h1>Featured List</h1>
-  <div style="position: absolute; top: 4vh; left: 50%; transform: translateX(-35%);">
+  <div style="display: flex; justify-content: center;">
   <input id="search" placeholder="Search All Projects"
     style="width: 30vw; height: 4vh; text-align: center">
   </input>
@@ -64,6 +64,6 @@
     <tbody id="projectList"></tbody>
     </tbody>
   </table>
-  <script src="./src/projectFiller.js"></script>
+  <script src="src/projectFiller.js"></script>
 </body>
 </html>
