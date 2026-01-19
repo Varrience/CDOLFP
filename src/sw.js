@@ -1,5 +1,5 @@
 const CACHE = "precache-v1";
-const ASSETS = ["public/style.css", "src/projectFiller.js", "src/scaler.js", "src/viewSources.js", "index.html", "favicon.ico"];
+const ASSETS = ["/public/style.css", "/src/projectFiller.js", "/src/scaler.js", "/src/viewSources.js", "/index.html", "/favicon.ico"];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
