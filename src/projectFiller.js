@@ -61,7 +61,6 @@ projectTable.innerHtml = "";
       const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
       const entry = document.create.element("tr");
       entry.innerHTML = `
-      <tr>
        <th>
         <a href=${location.pathname}project?url=https://studio.code.org${project.level}/${source}>
          <img class=project-thumbnail src=https://corsproxy.io?url=https://studio.code.org${project.thumbnailUrl} alt=${project.name}_Thumbnail loading=lazy></img>
