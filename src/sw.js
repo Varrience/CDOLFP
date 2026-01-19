@@ -20,28 +20,23 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(request)
         .then(async response => {
-          // Cache successful API responses
-          if (response.ok) {
-            caches.open(CACHE).then(cache => {
-                cache.put(request, response.clone());
-            });
-          }
-          return response;
-        })
-        .catch(() => {
-          // Network failed, try cache
-          return caches.open(CACHE).then(cache => cache.match(request))
-          // return caches.match(request)
-          //   .then(cached => {
-          //     if (cached) {
-          //       return cached;
-          //     }
-          //     // Both failed, return offline response
-          //     return new Response('Offline', {
-          //       status: 503,
-          //       statusText: 'Service Unavailable'
-          //     });
-          //   });
-        })
-    );
+        // First, try to use the navigation preload response if it's supported.
+        const preloadResponse = await event.preloadResponse;
+        if (preloadResponse) {
+          return preloadResponse;
+        }
+
+        const networkResponse = await fetch(event.request);
+        return networkResponse;
+      } catch (error) {
+        // catch is only triggered if an exception is thrown, which is likely
+        // due to a network error.
+        // If fetch() returns a valid HTTP response with a response code in
+        // the 4xx or 5xx range, the catch() will NOT be called.
+        console.log('Fetch failed; returning offline page instead.', error);
+
+        const cache = await caches.open(CACHE);
+        const cachedResponse = await cache.match(request);
+        return cachedResponse;
+      });
 });
