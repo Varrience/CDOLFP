@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project List</title>
+  <style>
+    .project-thumbnail {
+      width: 200px;
+      height: auto;
+    }
+    h1 {
+      color: lightgray;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #111111;
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href='./public/style.css' rel='stylesheet'>
+</head>
+<body style="background: black;font-family: 'Roboto';">
+  <h1>Featured List</h1>
+  <div style="position: absolute; top: 4vh; left: 50%; transform: translateX(-35%);">
+  <input id="search" placeholder="Search All Projects"
+    style="width: 30vw; height: 4vh; text-align: center">
+  </input>
+  <label for="searchby"></label>
+  <select id="searchby" style="height: 4.5vh;">
+    <option value="none"> None </option>
+    <option value="name"> Name </option>
+    <option value="type"> Type </option>
+    <option value="lastupdated"> Last Updated </option>
+  </select>
+</div>
+  <p style="color: white;">
+    Wanna contribute? Feel free to in
+    <a href="https://discord.gg/YRJdgNv4ZQ">Discord</a>
+    or the 
+    <a href="https://github.com/Varrience/CDOLFP">Main Repo</a>
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th id="projectThumbnails" class="header">Thumbnail</th>
+        <th id="projectNames" class="header filterable">Name <i class="arrow right"></i></th>
+        <th id="projectType" class="header filterable"> Type <i class="arrow right"></i></th>
+        <th id="projectUpdated" class="header filterable">Last Updated <i class="arrow right"></i></th>
+      </tr>
+    </thead>
+    <tbody id="projectList"></tbody>
+    </tbody>
+  </table>
+  <script src="src/projectFiller.js"></script>
+</body>
+</html>
