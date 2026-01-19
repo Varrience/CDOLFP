@@ -30,7 +30,7 @@ self.addEventListener('fetch', event => {
         })
         .catch(() => {
           // Network failed, try cache
-          return caches.open(CACHE).then(cache => cache.match(request)}
+          return caches.open(CACHE).then(cache => cache.match(request))
           // return caches.match(request)
           //   .then(cached => {
           //     if (cached) {
