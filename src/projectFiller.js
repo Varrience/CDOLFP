@@ -84,9 +84,7 @@ projectTable.innerHtml = "";
       })
       .finally(() => {
         if(index < ids.length-1) {
-        setTimeout(() => {
-            orderedFetch(index + 1)
-        }, 200);
+        orderedFetch(index + 1);
         }
       })
     })(0)
