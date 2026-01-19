@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Project List</title>
   <style>
@@ -7,21 +8,27 @@
       width: 200px;
       height: auto;
     }
+
     h1 {
       color: lightgray;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
     }
-    th, td {
+
+    th,
+    td {
       color: white;
       padding: 10px;
       text-align: left;
     }
+
     th {
       background-color: #111111;
     }
+
     a {
       text-decoration: none;
     }
@@ -32,24 +39,24 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <link href='public/style.css' rel='stylesheet'>
 </head>
+
 <body style="background: black;font-family: 'Roboto';">
   <h1>Featured List</h1>
   <div style="display: flex; justify-content: center;">
-  <input id="search" placeholder="Search All Projects"
-    style="width: 30vw; height: 4vh; text-align: center">
-  </input>
-  <label for="searchby"></label>
-  <select id="searchby" style="height: 4.5vh;">
-    <option value="none"> None </option>
-    <option value="name"> Name </option>
-    <option value="type"> Type </option>
-    <option value="lastupdated"> Last Updated </option>
-  </select>
-</div>
+    <input id="search" placeholder="Search All Projects" style="width: 30vw; height: 4vh; text-align: center">
+    </input>
+    <label for="searchby"></label>
+    <select id="searchby" style="height: 4.5vh;">
+      <option value="none"> None </option>
+      <option value="name"> Name </option>
+      <option value="type"> Type </option>
+      <option value="lastupdated"> Last Updated </option>
+    </select>
+  </div>
   <p style="color: white;">
     Wanna contribute? Feel free to in
     <a href="https://discord.gg/YRJdgNv4ZQ">Discord</a>
-    or the 
+    or the
     <a href="https://github.com/Varrience/CDOLFP">Main Repo</a>
   </p>
   <table>
@@ -64,6 +71,18 @@
     <tbody id="projectList"></tbody>
     </tbody>
   </table>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('src/sw.js')
+        .then((registration) => {
+          console.log('Service worker registered:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Registration failed:', error);
+        });
+    }
+  </script>
   <script src="src/projectFiller.js"></script>
 </body>
+
 </html>
