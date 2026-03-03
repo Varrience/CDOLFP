@@ -25,14 +25,13 @@ document.querySelector("#assets").onclick = function() {
   }).then(data => {
     let content = "";
     for(let media of data) {
-      media.filename = encodeURI(media.filename);
       content += `<p> ${media.filename} </p>`
       if(media.category === "image") {
-        content += `<img src="${host}/${media.filename}" style="max-width: 100%"></img>`
+        content += `<img src="${host}/${encodeURI(media.filename)}" style="max-width: 100%"></img>`
       } else {
         content += `
         <audio controls>
-        <source src="${host}/${media.filename}"></source>
+        <source src="${host}/${encodeURI(media.filename)}"></source>
         </audio>`
       }
     }
@@ -50,7 +49,7 @@ document.querySelector("#animations").onclick = function() {
     let content = "";
     for(let image of data) {
       if(image.filename !== undefined) {
-        content += `<img src=${host}/${image.filename} style="max-width: 100%"></image>`;
+        content += `<img src="${host}/${encodeURI(image.filename)}" style="max-width: 100%"></image>`;
       }
     }
     document.querySelector("#content").innerHTML = content || "<p> No Animations </p>";
