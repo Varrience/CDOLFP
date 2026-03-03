@@ -2,13 +2,13 @@ const ids = ["6YncrlpxS5RW0uveQOy_iRdVSqR3T5UCpNB6_eHZRvY", "Wi0QfjYZ8dQZcQckRWC
 const API = "https://corsproxy.io/?url=https://studio.code.org/v3/channels/"; //https://fetch-proxy.jacobbutler6.repl.co/json?url=
 const projectTable = document.querySelector("#projectList");
 projectTable.innerHtml = "";
-const pages = {};
+const cacheType = "project"
+const pages = {[cacheType]: []};
 const projectsPerPage = 30;
 const maxPage = Math.ceil((ids.length - 1) / projectsPerPage);
 const previous = document.querySelector("#previous");
 const pageCounter = document.querySelector("#counter");
 const next = document.querySelector("#next");
-const cacheType = "project"
 let currentPage = 1;
 // Loop through the projects array and create table rows with thumbnails
 function pageParser(source) {
@@ -132,9 +132,9 @@ function searchIndex(pageNumber) {
     posts.forEach(post => pageParser(post));
     checkArrows();
 
-    previous.onclick = async e => changePage(e, -1);
+    previous.onclick = async e => { changePage(e, -1) }
 
-    next.onclick = async e => changePage(e, 1);
+    next.onclick = async e => { changePage(e, 1) }
 
     function mainIndex(omitState) {
         let params = new URLSearchParams(location.search);
