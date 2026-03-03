@@ -25,7 +25,7 @@ document.querySelector("#assets").onclick = function() {
   }).then(data => {
     let content = "";
     for(let media of data) {
-      media = encodeURI(media);
+      media.filename = encodeURI(media.filename);
       content += `<p> ${media.filename} </p>`
       if(media.category === "image") {
         content += `<img src="${host}/${media.filename}" style="max-width: 100%"></img>`
