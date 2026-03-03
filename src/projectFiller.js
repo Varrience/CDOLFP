@@ -44,11 +44,6 @@ function pageParser(source) {
         .catch(err => {
             console.log(err);
         })
-        .finally(() => {
-            if (index < ids.length - 1) {
-                orderedFetch(index + 1);
-            }
-        })
 }
 
 function filterProjects(e) {
