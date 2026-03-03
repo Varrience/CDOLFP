@@ -24485,6 +24485,7 @@ const maxPage = (ids.length - 1) / projectsPerPage;
 const previous = document.querySelector("#previous");
 const pageCounter = document.querySelector("#counter");
 const next = document.querySelector("#next");
+let currentPage = 1;
 // Loop through the projects array and create table rows with thumbnails
 function pageParser(index) {
     let source = ids[index];
