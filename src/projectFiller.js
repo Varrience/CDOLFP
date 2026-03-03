@@ -119,7 +119,7 @@ function searchIndex(pageNumber) {
     const qpage = params.get("page") || null;
     // const id = params.get("query") ? "QUERY:" + params.get("query") : "SORT:" + params.get("sort");
     if (qpage === null) { currentPage = 1; }
-    else { currentPage = parseInt(currentPage[1]); }
+    else { currentPage = parseInt(qpage); }
     let cachePage = pages;
     currentPage = pageNumber || currentPage;
     projectTable.innerHTML = '';
