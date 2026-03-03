@@ -11,8 +11,7 @@ const next = document.querySelector("#next");
 const cacheType = "project"
 let currentPage = 1;
 // Loop through the projects array and create table rows with thumbnails
-function pageParser(index) {
-    let source = ids[index];
+function pageParser(source) {
     fetch(API + source)
         .then(response => {
             if (response.status < 206) {
