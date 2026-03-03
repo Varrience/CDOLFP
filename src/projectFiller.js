@@ -8,7 +8,7 @@ const maxPage = Math.ceil((ids.length - 1) / projectsPerPage);
 const previous = document.querySelector("#previous");
 const pageCounter = document.querySelector("#counter");
 const next = document.querySelector("#next");
-let currentPage = 1;
+let currentPage;
 // Loop through the projects array and create table rows with thumbnails
 function pageParser(source) {
     fetch(API + source)
@@ -113,12 +113,13 @@ document.querySelectorAll(".filterable").forEach(d => {
     d.onclick = filterProjects;
 })
 
-if (currentPage === null) { currentPage = 1; }
-else { currentPage = parseInt(currentPage[1]); }
 
 function searchIndex(pageNumber) {
     const params = new URLSearchParams(location.search);
+    const qpage = params.get("page") || null;
     // const id = params.get("query") ? "QUERY:" + params.get("query") : "SORT:" + params.get("sort");
+    if (qpage === null) { currentPage = 1; }
+    else { currentPage = parseInt(currentPage[1]); }
     let cachePage = pages;
     currentPage = pageNumber || currentPage;
     projectTable.innerHTML = '';
@@ -140,10 +141,6 @@ function searchIndex(pageNumber) {
             const data = ids.slice((page - 1) * 30, page * 30);
             cachePage.length = data.length;
             cachePage[page - 1] = data;
-        }
-        if (!params.get("total")) {
-            params.set("total", cachePage.length);
-            history.replaceState({}, "", buildUrl(params));
         }
         return page === currentPage ? cachePage[page - 1] : [];
     }
@@ -185,6 +182,6 @@ function buildUrl(params) {
     url.search = new URLSearchParams(params).toString();
     return url;
 }
-searchIndex(1)
+searchIndex()
 document.querySelector("#search").onchange = searchAll;
 document.querySelector("#searchby").onchange = searchAll;
