@@ -2,8 +2,7 @@ const ids = ["6YncrlpxS5RW0uveQOy_iRdVSqR3T5UCpNB6_eHZRvY", "Wi0QfjYZ8dQZcQckRWC
 const API = "https://corsproxy.io/?url=https://studio.code.org/v3/channels/"; //https://fetch-proxy.jacobbutler6.repl.co/json?url=
 const projectTable = document.querySelector("#projectList");
 projectTable.innerHtml = "";
-const cacheType = "project"
-const pages = {[cacheType]: []};
+const pages = [];
 const projectsPerPage = 30;
 const maxPage = Math.ceil((ids.length - 1) / projectsPerPage);
 const previous = document.querySelector("#previous");
@@ -124,8 +123,8 @@ else { currentPage = parseInt(currentPage[1]); }
 
 function searchIndex(pageNumber) {
     const params = new URLSearchParams(location.search);
-    const id = params.get("query") ? "QUERY:" + params.get("query") : "SORT:" + params.get("sort");
-    let cachePage = pages[id] = pages[id] || { [cacheType]: [] };
+    // const id = params.get("query") ? "QUERY:" + params.get("query") : "SORT:" + params.get("sort");
+    let cachePage = pages;
     currentPage = pageNumber || currentPage;
     projectTable.innerHTML = '';
     const posts = mainIndex(true)
@@ -142,16 +141,16 @@ function searchIndex(pageNumber) {
         if (!omitState) { params.set("page", currentPage); }
         else if (!Number.isSafeInteger(parseInt(params.get("page")))) { params.set("page", currentPage); }
         history.replaceState({}, "", buildUrl(params));
-        if (cachePage[cacheType][page - 1] === undefined) {
+        if (cachePage[page - 1] === undefined) {
             const data = ids.slice((page - 1) * 30, page * 30);
             cachePage.length = data.length;
-            cachePage[cacheType][page - 1] = data[cacheType];
+            cachePage[page - 1] = data;
         }
         if (!params.get("total")) {
             params.set("total", cachePage.length);
             history.replaceState({}, "", buildUrl(params));
         }
-        return page === currentPage ? cachePage[cacheType][page - 1] : [];
+        return page === currentPage ? cachePage[page - 1] : [];
     }
 
     function checkArrows() {
@@ -175,7 +174,7 @@ function searchIndex(pageNumber) {
         let params = new URLSearchParams(location.search);
         let page = parseInt(params.get("page")) || 1;
         let oldCache = cachePage;
-        cachePage = pages[(params.get("query") ? "QUERY:" + params.get("query") : "SORT:" + params.get("sort"))];
+        cachePage = pages;
         if (page !== currentPage || oldCache !== cachePage) {
             projectTable.innerHTML = '';
             currentPage = page;
