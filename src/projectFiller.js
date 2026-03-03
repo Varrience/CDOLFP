@@ -132,9 +132,9 @@ function searchIndex(pageNumber) {
     posts.forEach(post => pageParser(post));
     checkArrows();
 
-    previous.onclick = async e => await changePage(e, -1);
+    previous.onclick = async e => changePage(e, -1);
 
-    next.onclick = async e => await changePage(e, 1);
+    next.onclick = async e => changePage(e, 1);
 
     function mainIndex(omitState) {
         let params = new URLSearchParams(location.search);
@@ -191,6 +191,6 @@ function buildUrl(params) {
     url.search = new URLSearchParams(params).toString();
     return url;
 }
-searchIndex()
+searchIndex(1)
 document.querySelector("#search").onchange = searchAll;
 document.querySelector("#searchby").onchange = searchAll;
